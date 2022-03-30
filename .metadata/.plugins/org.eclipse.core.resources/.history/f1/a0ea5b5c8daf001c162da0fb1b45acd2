@@ -1,0 +1,12 @@
+package com.lti.banking.dao;
+
+import com.lti.banking.beans.Benificiary;
+import com.lti.banking.beans.Customer;
+
+public interface BenificiaryDAO {
+
+	public int addBen(Benificiary ben);
+
+	public Benificiary searchBenbyId(int id);
+	
+}

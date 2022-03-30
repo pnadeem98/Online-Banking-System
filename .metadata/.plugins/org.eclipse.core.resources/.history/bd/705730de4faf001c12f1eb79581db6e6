@@ -1,0 +1,46 @@
+package com.lti.banking.beans;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Account")
+public class Account {
+
+	@Id
+	@Column(name="account_no")
+	private String accountNo;
+	
+	@Column(name="name")
+	private String Name;
+	
+	public String getAccountNo() {
+		return accountNo;
+	}
+	public void setAccountNo(String accountNo) {
+		this.accountNo = accountNo;
+	}
+	public String getName() {
+		return Name;
+	}
+	public void setName(String name) {
+		Name = name;
+	}
+	public Account(String accountNo, String name) {
+		super();
+		this.accountNo = accountNo;
+		Name = name;
+	}
+	public Account() {
+		super();
+	}
+	@Override
+	public String toString() {
+		return "Account [accountNo=" + accountNo + ", Name=" + Name + "]";
+	}
+	
+	
+	
+}

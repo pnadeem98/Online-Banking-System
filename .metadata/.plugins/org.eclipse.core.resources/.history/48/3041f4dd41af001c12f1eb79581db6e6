@@ -1,0 +1,27 @@
+package com.lti.banking.dao;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import com.lti.banking.beans.Account;
+
+public class AccountDAOImpl implements AccountDAO {
+
+	
+	@PersistenceContext
+	private EntityManager em;
+	
+	
+	@Override
+	public int addAccount(Account a) {
+		
+		System.out.println(a);
+		
+		em.persist(a);
+		
+		System.out.println("Added Sucessfully");
+		
+		return 1;
+	}
+
+}

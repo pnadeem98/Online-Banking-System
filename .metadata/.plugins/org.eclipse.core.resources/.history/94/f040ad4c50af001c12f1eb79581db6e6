@@ -1,0 +1,9 @@
+package com.lti.banking.service;
+
+import com.lti.banking.beans.Account;
+
+public interface AccountService {
+
+	
+}
+
