@@ -7,15 +7,23 @@ import com.lti.banking.beans.Account;
 import com.lti.banking.dao.AccountDAO;
 
 @Service("accSer")
-public class AccountServiceImpl implements AccountService {
+public class AccountServiceImpl implements AccountService{
 
 	@Autowired
-	AccountDAO dao;
+	private AccountDAO dao;
 	
+	public AccountDAO getDao() {
+		return dao;
+	}
+
+	public void setDao(AccountDAO dao) {
+		this.dao = dao;
+	}
+
 	@Override
-	public long addAcc(Account acc) {
+	public long addacc(Account acc) {
 		
-		return dao.addAcc(acc);
+		return dao.addacc(acc);
 	}
 
 }

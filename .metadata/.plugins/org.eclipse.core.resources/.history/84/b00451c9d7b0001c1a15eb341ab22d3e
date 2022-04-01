@@ -1,0 +1,35 @@
+package com.lti.banking.dao;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Repository;
+
+import com.lti.banking.beans.Account;
+import com.lti.banking.beans.Customer;
+
+@Repository
+public class AccountDAOImpl implements AccountDAO {
+
+	@PersistenceContext
+	private EntityManager em;
+	
+	@Override
+	@Transactional
+	public long addacc(Account acc) {
+	   int id=12;
+	   Customer cus=em.find(Customer.class, id);
+		
+	   Account cls = null;
+	   if(cus!=null) {
+		   cls.setAccType(acc.getAccType());
+		   cls.setAmount(acc.getAmount());
+		   cls.setCustomerId(acc.getCustomerId());
+		   em.persist(cls);
+	   }
+		
+		return acc.getAccNo();
+	}
+
+}

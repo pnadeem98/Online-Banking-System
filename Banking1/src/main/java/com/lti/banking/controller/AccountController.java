@@ -16,14 +16,14 @@ import com.lti.banking.service.AccountServiceImpl;
 @RequestMapping("/Account")
 public class AccountController {
 
+	
 	@Autowired
 	AccountServiceImpl accSer;
 	
-	
-	@PostMapping(value="/addacc",consumes = "application/json")
-	public void addAccount(@RequestBody Account acc) {
-	
-		 accSer.addAcc(acc);
+	@PostMapping(value="/addacc",consumes="application/json")
+	public void addBenificiary(@RequestBody Account acc) {
+		
+		accSer.addacc(acc);
 	}
 	
 	

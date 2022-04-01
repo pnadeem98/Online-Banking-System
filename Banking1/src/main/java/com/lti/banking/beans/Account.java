@@ -1,15 +1,14 @@
 package com.lti.banking.beans;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="Account")
@@ -17,29 +16,43 @@ public class Account {
 
 	@Id
 	@Column(name="Acc_No")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CUST_SEQ")
+	@SequenceGenerator(name = "CUST_SEQ", sequenceName = "cust_seq", allocationSize = 1)
 	private long accNo;
 	
-	
-    @OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-	@JoinColumn(name="Customer_Id")
-	private Customer customerId;
+    @Column(name="Customer_id")
+	private int customerId;
 	
 	@Column(name="Acc_type")
 	private String accType;
 	
-	@Column(name="Amount")
+	@Column(name="Total_Amount")
 	private double Amount;
 	
+	
+	public Account(String accType, double amount) {
+		super();
+		this.accType = accType;
+		this.Amount = amount;
+	}
+	
+	public Account(int customerId, String accType, double amount) {
+		super();
+		this.customerId = customerId;
+		this.accType = accType;
+		this.Amount = amount;
+	}
+
 	public long getAccNo() {
 		return accNo;
 	}
 	public void setAccNo(long accNo) {
 		this.accNo = accNo;
 	}
-	public Customer getCustomerId() {
+	public int getCustomerId() {
 		return customerId;
 	}
-	public void setCustomerId(Customer customerId) {
+	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
 	}
 	public String getAccType() {
@@ -54,7 +67,7 @@ public class Account {
 	public void setAmount(double amount) {
 		Amount = amount;
 	}
-	public Account(long accNo, Customer customerId, String accType, double amount) {
+	public Account(long accNo, int customerId, String accType, double amount) {
 		super();
 		this.accNo = accNo;
 		this.customerId = customerId;
@@ -72,3 +85,4 @@ public class Account {
 	
 	
 }
+

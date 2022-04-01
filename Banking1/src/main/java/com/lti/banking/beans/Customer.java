@@ -2,20 +2,37 @@ package com.lti.banking.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="Customer")
 public class Customer {
 	
-	@Id
+    @Id
 	@Column(name="Customer_Id")
-	private int customerId;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CUST_SEQ")
+	@SequenceGenerator(name = "CUST_SEQ", sequenceName = "cust_seq", allocationSize = 1)
+    private int customerId;
 
 	@Column(name="First_Name")
 	private String firstName;
 	
+	public Customer(String firstName, String lastName, long mobileNumber, String emailId, long aadharNo, String address,
+			String date) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.mobileNumber = mobileNumber;
+		this.emailId = emailId;
+		this.aadharNo = aadharNo;
+		this.address = address;
+		this.date = date;
+	}
+
 	@Column(name="Last_Name")
 	private String lastName;
 	
@@ -95,19 +112,6 @@ public class Customer {
 	}
 
 	public void setDate(String date) {
-		this.date = date;
-	}
-
-	public Customer(int customerId, String firstName, String lastName, long mobileNumber, String emailId, long aadharNo,
-			String address, String date) {
-		super();
-		this.customerId = customerId;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.mobileNumber = mobileNumber;
-		this.emailId = emailId;
-		this.aadharNo = aadharNo;
-		this.address = address;
 		this.date = date;
 	}
 

@@ -16,7 +16,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 	
 	@Override
 	@Transactional
-	public int addCustomer(Customer cus) {
+	public long addCustomer(Customer cus) {
 		
          em.persist(cus);
 		

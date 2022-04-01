@@ -2,7 +2,10 @@ package com.lti.banking.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -11,17 +14,27 @@ public class Benificiary {
 
 	@Id
 	@Column(name="Ben_Id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CUST_SEQ")
+	@SequenceGenerator(name = "CUST_SEQ", sequenceName = "cust_seq", allocationSize = 1)
 	private int benId;
 	
 	@Column(name="Ben_Name")
 	private String benName;
-	
+
 	@Column(name="Ben_Acc_No")
 	private long benAccNo;
 	
 	@Column(name="Ben_Nick_Name")
 	private String benNickName;
 
+	
+	public Benificiary(String benName, long benAccNo, String benNickName) {
+		super();
+		this.benName = benName;
+		this.benAccNo = benAccNo;
+		this.benNickName = benNickName;
+	}
+	
 	public int getBenId() {
 		return benId;
 	}

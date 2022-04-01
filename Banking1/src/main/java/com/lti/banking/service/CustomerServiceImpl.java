@@ -11,7 +11,7 @@ import com.lti.banking.dao.CustomerDAO;
 public class CustomerServiceImpl implements CustomerService {
 
 	@Autowired
-	CustomerDAO dao;
+	private CustomerDAO dao;
 	
 	public CustomerDAO getDao() {
 		return dao;
@@ -22,7 +22,7 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public int addCustomer(Customer cus) {
+	public long addCustomer(Customer cus) {
 		
 		return dao.addCustomer(cus);
 	}
